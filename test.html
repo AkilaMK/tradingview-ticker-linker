@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticker Sidebar Test Page</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            background: #f5f5f5;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .social-post {
+            border-left: 3px solid #1da1f2;
+            padding-left: 15px;
+            margin: 15px 0;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .dynamic-content {
+            border: 2px dashed #ccc;
+            padding: 15px;
+            margin: 10px 0;
+            background: #fff;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .ticker-demo {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        .demo-instructions {
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+<h1>TradingView Ticker Sidebar Demo</h1>
+
+<div class="demo-instructions">
+    <h3>🚀 How to Use the Ticker Sidebar</h3>
+    <ol>
+        <li><strong>Install the extension</strong> and reload this page</li>
+        <li><strong>Look for the sidebar</strong> in the top-right corner</li>
+        <li><strong>Scroll down</strong> to see new tickers being discovered</li>
+        <li><strong>Click any ticker</strong> in the sidebar to open TradingView chart</li>
+        <li><strong>Collapse/expand</strong> the sidebar using the − / + button</li>
+    </ol>
+</div>
+
+<div class="test-section">
+    <h2>Bottom Section - More Tickers</h2>
+    <div class="social-post ticker-demo">
+        "Final thoughts: $SPY still king for steady gains, $QQQ for tech exposure, individual picks: $AAPL $MSFT $GOOGL"
+    </div>
+    <div class="social-post ticker-demo">
+        "Risk management: Stop losses on $TSLA $NVDA, taking profits on $AMD, holding $AAPL $MSFT long-term"
+    </div>
+    <div class="social-post ticker-demo">
+        "Sector rotation happening: Out of $NFLX $DIS, into $JPM $BAC. Financials looking strong"
+    </div>
+    <div class="social-post ticker-demo">
+        "Dividend portfolio: $JNJ $PG $KO $PEP for stability, $V $MA for growth dividends"
+    </div>
+</div>
+
+<div style="height: 50px; display: flex; align-items: center; justify-content: center; color: #666;">
+    <small>🎯 Scroll back up to see all discovered tickers in the sidebar!</small>
+</div>
+
+<script>
+    // Add more dynamic content periodically
+    const additionalContent = [
+        "Breaking: $AAPL announces new product line. Stock up 3% after hours! 🚀",
+        "Fed meeting tomorrow. Watching $SPY $QQQ $TLT closely for rate decision impact 🏦",
+        "$TSLA FSD beta expanding. Robotaxi future getting closer? 🤖🚗",
+        "Chip shortage easing: $NVDA $AMD $INTC all benefiting from supply chain recovery 🔧",
+        "$MSFT Teams integration with OpenAI announced. Enterprise AI boom continues 💼",
+        "Energy transition: $TSLA leading EVs, $ENPH solar, $BE hydrogen plays ⚡",
+        "$GOOGL YouTube Shorts monetization growing fast. TikTok competition heating up 📱",
+        "Biotech breakout: $GILD hepatitis cure, $VRTX CF treatments, $ISRG surgical robots 🧬"
+    ];
+
+    let contentIndex = 0;
+    const addPeriodicContent = () => {
+        if (contentIndex < additionalContent.length) {
+            setTimeout(() => {
+                const container = document.getElementById('dynamic-content');
+                const post = document.createElement('div');
+                post.className = 'social-post ticker-demo';
+                post.style.cssText = 'animation: slideIn 0.5s ease; margin: 10px 0; border-left: 3px solid #28a745;';
+                post.innerHTML = `<strong>🔥 Hot Take:</strong> ${additionalContent[contentIndex]}`;
+                container.appendChild(post);
+                contentIndex++;
+
+                if (contentIndex < additionalContent.length) {
+                    addPeriodicContent();
+                }
+            }, Math.random() * 3000 + 2000); // Random delay between 2-5 seconds
+        }
+    };
+
+    // Start adding periodic content after page loads
+    setTimeout(addPeriodicContent, 3000);
+
+    // Add slide in animation
+    const additionalStyle = document.createElement('style');
+    additionalStyle.textContent += `
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    `;
+    document.head.appendChild(additionalStyle);
+</script>
+</body>
+</html>Stock Discussion Posts</h2>
+<div class="social-post ticker-demo">
+    "Just bought more $AAPL on this dip! 📈 Also watching $MSFT and $GOOGL for potential entries."
+</div>
+<div class="social-post ticker-demo">
+    "Market update: $SPY +1.2%, $QQQ +1.8%, $IWM -0.5%. Tech is leading with $NVDA up 5%! 🚀"
+</div>
+<div class="social-post ticker-demo">
+    "$TSLA earnings next week. Expecting big moves. Also holding $AMD and $INTC for the chip recovery."
+</div>
+</div>
+
+<div class="test-section">
+    <h2>Crypto & ETF Discussion</h2>
+    <div class="social-post ticker-demo">
+        "Portfolio allocation: 40% $SPY, 20% $QQQ, 15% $VTI, 10% $GLD, 15% individual stocks like $AAPL $MSFT"
+    </div>
+    <div class="social-post ticker-demo">
+        "Crypto is pumping! $BTC breaking $45k, $ETH following strong. Traditional markets: $NVDA $AMD leading."
+    </div>
+</div>
+
+<div class="test-section">
+    <h2>Meme Stock Discussions</h2>
+    <div class="social-post ticker-demo">
+        "$GME squeeze potential? Also watching $AMC and $BB. Diamond hands! 💎🙌"
+    </div>
+    <div class="social-post ticker-demo">
+        "Reddit favorites: $PLTR $SOFI $NIO all moving. $TSLA still the king though!"
+    </div>
+</div>
+
+<div class="test-section">
+    <h2>Dynamic Content Test</h2>
+    <p>Click buttons to add new content with ticker symbols:</p>
+
+    <button onclick="addRandomPost()">Add Random Stock Post</button>
+    <button onclick="addCryptoPost()">Add Crypto Post</button>
+    <button onclick="addEarningsPost()">Add Earnings Post</button>
+    <button onclick="addMemePost()">Add Meme Stock Post</button>
+    <button onclick="clearContent()">Clear All</button>
+
+    <div id="dynamic-content" class="dynamic-content">
+        <em>Click buttons above to add dynamic content...</em>
+    </div>
+</div>
+
+<div class="test-section">
+    <h2>Long Content for Scrolling Test</h2>
+    <div class="social-post ticker-demo">
+        "Deep dive analysis: $AAPL fundamentals strong with iPhone 15 sales, services revenue growing. P/E reasonable at current levels."
+    </div>
+    <div class="social-post ticker-demo">
+        "$MSFT Azure continues dominating cloud space. Competition with $GOOGL and $AMZN intensifying. AI integration key."
+    </div>
+    <div class="social-post ticker-demo">
+        "EV sector update: $TSLA production ramping, $RIVN struggling, $LCID interesting but risky, $NIO expanding globally."
+    </div>
+    <div class="social-post ticker-demo">
+        "Semiconductor outlook: $NVDA AI boom continuing, $AMD catching up, $INTC turnaround story, $QCOM mobile recovery."
+    </div>
+    <div class="social-post ticker-demo">
+        "Financial sector: $JPM earnings solid, $BAC net interest margin pressure, $GS trading revenues volatile, $V $MA payment growth."
+    </div>
+    <div class="social-post ticker-demo">
+        "Healthcare plays: $JNJ dividend aristocrat, $PFE post-COVID transition, $ABBV Humira cliff concerns, $LLY Ozempic success."
+    </div>
+    <div class="social-post ticker-demo">
+        "ETF strategies: Core position $SPY $QQQ, growth tilt $VTI, international $EEM, bonds $TLT, commodities $GLD."
+    </div>
+    <div class="social-post ticker-demo">
+        "Options plays this week: $AAPL earnings strangle, $TSLA iron condor, $SPY covered calls, $QQQ put spreads."
+    </div>
+</div>
+
+<div class="note">
+    <strong>Note:</strong> The sidebar will automatically collect all ticker symbols from this page and any new content you add.
+    Try scrolling to see it update in real-time!
+</div>
+
+<script>
+    const stockPosts = [
+        "$AAPL breaking out of resistance! Target $200 📈",
+        "Bought the $TSLA dip at $180. Let's see if Elon delivers! 🚀",
+        "$MSFT Azure numbers looking strong. Cloud growth continuing 💪",
+        "$NVDA AI boom isn't over. Still bullish long-term 🤖",
+        "$GOOGL search dominance + AI integration = winner 🔍",
+        "$AMZN AWS + retail recovery story playing out 📦",
+        "$META metaverse pivot + efficiency improvements 🥽",
+        "$NFLX content spend paying off. Subscriber growth back 📺"
+    ];
+
+    const cryptoPosts = [
+        "$BTC forming cup and handle pattern. $50k next? ₿",
+        "$ETH 2.0 staking rewards looking attractive 🏦",
+        "$DOGE community still strong despite volatility 🐕",
+        "$SOL ecosystem expanding rapidly. DeFi summer 2.0? ☀️"
+    ];
+
+    const earningsPosts = [
+        "$AAPL earnings next Tuesday. Expecting iPhone beat 📱",
+        "$TSLA delivery numbers this week. Production ramp key 🚗",
+        "$MSFT Teams revenue should be strong this quarter 💼",
+        "$GOOGL advertising recovery story continues 📊"
+    ];
+
+    const memePosts = [
+        "$GME apes still holding strong! Diamond hands forever 💎🙌",
+        "$AMC theater recovery play. Popcorn sales up! 🍿",
+        "$BB comeback story brewing. Patent portfolio undervalued 📱",
+        "$PLTR government contracts + commercial expansion 🛡️"
+    ];
+
+    function addRandomPost() {
+        addPost(stockPosts[Math.floor(Math.random() * stockPosts.length)]);
+    }
+
+    function addCryptoPost() {
+        addPost(cryptoPosts[Math.floor(Math.random() * cryptoPosts.length)]);
+    }
+
+    function addEarningsPost() {
+        addPost(earningsPosts[Math.floor(Math.random() * earningsPosts.length)]);
+    }
+
+    function addMemePost() {
+        addPost(memePosts[Math.floor(Math.random() * memePosts.length)]);
+    }
+
+    function addPost(content) {
+        const container = document.getElementById('dynamic-content');
+        const post = document.createElement('div');
+        post.className = 'social-post ticker-demo';
+        post.style.cssText = 'animation: fadeIn 0.5s ease; margin: 10px 0;';
+        post.textContent = content;
+        container.appendChild(post);
+    }
+
+    function clearContent() {
+        const container = document.getElementById('dynamic-content');
+        container.innerHTML = '<em>Click buttons above to add dynamic content...</em>';
+    }
+
+    // Add CSS for fade in animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Simulate auto-loading content
+    let autoContentTimer = setInterval(() => {
+        if (Math.random() > 0.7) { // 30% chance every 3 seconds
+            const allPosts = [...stockPosts, ...cryptoPosts, ...earningsPosts, ...memePosts];
+            addPost(allPosts[Math.floor(Math.random() * allPosts.length)]);
+        }
+    }, 3000);
+
+    // Stop auto-loading after 2 minutes
+    setTimeout(() => {
+        clearInterval(autoContentTimer);
+    }, 120000);
+</script>
+</body>
+</html>Static Content Test</h2>
+<p>Here are some ticker symbols that should be converted to links:</p>
+<ul>
+    <li>Apple stock: $AAPL is doing well today</li>
+    <li>Microsoft: $MSFT reached new highs</li>
+    <li>Tesla: $TSLA is volatile as usual</li>
+    <li>Amazon: $AMZN reports earnings next week</li>
+    <li>Google: $GOOGL and $GOOG are both available</li>
+    <li>Bitcoin tracking: $BTC is up today</li>
+    <li>S&P 500 ETF: $SPY is a popular choice</li>
+</ul>
+
+<p>Mixed content: "I bought $NVDA at $400 and sold $AMD at $120. $TSLA to the moon! 🚀"</p>
+</div>
+
+<div class="test-section">
+    <h2>Dynamic Content Test</h2>
+    <p>Click the buttons below to add dynamic content with ticker symbols:</p>
+
+    <button onclick="addTicker('$AAPL', 'Apple is trading higher today')">Add Apple</button>
+    <button onclick="addTicker('$MSFT', 'Microsoft Azure revenue is growing')">Add Microsoft</button>
+    <button onclick="addTicker('$TSLA', 'Tesla deliveries exceeded expectations')">Add Tesla</button>
+    <button onclick="addMixedContent()">Add Mixed Content</button>
+    <button onclick="clearContent()">Clear Dynamic Content</button>
+
+    <div id="dynamic-content" class="dynamic-content">
+        <em>Dynamic content will appear here...</em>
+    </div>
+</div>
+
+<div class="test-section">
+    <h2>Edge Cases</h2>
+    <p>These should NOT be converted (edge cases):</p>
+    <ul>
+        <li>Just a dollar sign: $ without ticker</li>
+        <li>Too short: $A or $AB (depending on validation)</li>
+        <li>Too long: $TOOLONG</li>
+        <li>Lowercase: $aapl (should not match)</li>
+        <li>Inside existing links: <a href="#">$AAPL link</a></li>
+        <li>Currency amounts: $100, $1000, $50.99</li>
+    </ul>
+</div>
+
+<div class="test-section">
+    <h2>Social Media Style Test</h2>
+    <p>Simulate social media posts:</p>
+    <div style="border-left: 3px solid #1da1f2; padding-left: 15px; margin: 10px 0;">
+        "Just bought more $AAPL on the dip! 📈 Also considering $MSFT and $GOOGL for my portfolio. What do you think about $TSLA? #investing #stocks"
+    </div>
+    <div style="border-left: 3px solid #1da1f2; padding-left: 15px; margin: 10px 0;">
+        "Market update: $SPY +1.2%, $QQQ +1.8%, $IWM -0.5%. Tech leading the way with $NVDA up 5%! 🚀"
+    </div>
+</div>
+
+<script>
+    function addTicker(ticker, message) {
+        const container = document.getElementById('dynamic-content');
+        const div = document.createElement('div');
+        div.style.cssText = 'margin: 10px 0; padding: 10px; background: white; border-radius: 4px;';
+        div.textContent = `${ticker}: ${message}`;
+        container.appendChild(div);
+    }
+
+    function addMixedContent() {
+        const container = document.getElementById('dynamic-content');
+        const div = document.createElement('div');
+        div.style.cssText = 'margin: 10px 0; padding: 10px; background: white; border-radius: 4px;';
+        div.innerHTML = `
+            <p>Portfolio update: $AAPL (+2.1%), $MSFT (+1.8%), $GOOGL (-0.5%)</p>
+            <p>Watching: $NVDA, $AMD, $TSLA for potential entries</p>
+        `;
+        container.appendChild(div);
+    }
+
+    function clearContent() {
+        const container = document.getElementById('dynamic-content');
+        container.innerHTML = '<em>Dynamic content will appear here...</em>';
+    }
+
+    // Simulate dynamic content loading (like infinite scroll)
+    setTimeout(() => {
+        const container = document.getElementById('dynamic-content');
+        const div = document.createElement('div');
+        div.style.cssText = 'margin: 10px 0; padding: 10px; background: #e8f4fd; border-radius: 4px;';
+        div.textContent = 'Auto-loaded content: $SPY is testing resistance at $450';
+        container.appendChild(div);
+    }, 2000);
+</script>
+</body>
+</html>
